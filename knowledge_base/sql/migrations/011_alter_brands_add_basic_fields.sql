@@ -1,0 +1,15 @@
+ALTER TABLE brands
+ADD COLUMN brand_code VARCHAR(64) NULL COMMENT '品牌业务编码' AFTER id,
+ADD COLUMN brand_enterprise_entity VARCHAR(255) NULL COMMENT '品牌企业主体' AFTER intro,
+ADD COLUMN business_license_image_path TEXT NULL COMMENT '企业营业执照图片路径' AFTER brand_enterprise_entity,
+ADD COLUMN industry_id VARCHAR(64) NULL COMMENT '所属行业' AFTER business_license_image_path,
+ADD COLUMN english_name VARCHAR(255) NULL COMMENT '品牌英文名' AFTER industry_id,
+ADD COLUMN positioning TEXT NULL COMMENT '品牌定位' AFTER english_name,
+ADD COLUMN advantages TEXT NULL COMMENT '品牌优势' AFTER positioning,
+ADD COLUMN mission TEXT NULL COMMENT '品牌使命' AFTER advantages,
+ADD COLUMN vision TEXT NULL COMMENT '品牌愿景' AFTER mission,
+ADD COLUMN target_regions_json JSON NULL COMMENT '目标区域JSON数组' AFTER vision,
+ADD COLUMN other_info TEXT NULL COMMENT '品牌基础其他信息' AFTER target_regions_json,
+ADD COLUMN customer_service_hotline VARCHAR(255) NULL COMMENT '客服热线' AFTER website,
+ADD COLUMN official_wechat_account VARCHAR(255) NULL COMMENT '官方微信公众号' AFTER customer_service_hotline,
+ADD UNIQUE KEY uk_brand_code (brand_code);

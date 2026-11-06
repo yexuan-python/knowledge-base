@@ -1,0 +1,7 @@
+ALTER TABLE document_registry
+ADD COLUMN summary_status VARCHAR(32) NULL,
+ADD COLUMN summary_error TEXT NULL,
+ADD COLUMN summary_updated_at TIMESTAMP NULL DEFAULT NULL,
+ADD COLUMN facts_status VARCHAR(32) NULL,
+ADD COLUMN facts_error TEXT NULL,
+ADD COLUMN facts_updated_at TIMESTAMP NULL DEFAULT NULL;

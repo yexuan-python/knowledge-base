@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS upload_task_files (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    task_id VARCHAR(128) NOT NULL,
+    file_index INT NOT NULL,
+    original_filename VARCHAR(1024) NOT NULL,
+    stored_path VARCHAR(2048) NOT NULL,
+    file_size BIGINT NULL,
+    file_hash CHAR(64) NULL,
+    converted_version INT NULL,
+    status VARCHAR(32) NOT NULL,
+    document_id VARCHAR(128) NULL,
+    source_type VARCHAR(64) NULL,
+    chunk_count INT NULL,
+    error_message TEXT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uk_upload_task_file (task_id, file_index),
+    INDEX idx_upload_task_files_task_status (task_id, status),
+    INDEX idx_upload_task_files_hash (file_hash)
+) COMMENT='上传任务中的文件明细';

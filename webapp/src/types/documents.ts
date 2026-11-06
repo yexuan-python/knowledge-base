@@ -1,0 +1,61 @@
+export type UploadTaskCreateResponse = {
+  task_id: string;
+  status: string;
+  file_count: number;
+  message: string;
+};
+
+export type UploadTaskFileStatus = {
+  file_id: number;
+  file_index: number;
+  file_name: string;
+  file_role?: string | null;
+  status: string;
+  file_size?: number | null;
+  file_hash?: string | null;
+  content_type?: string | null;
+  converted_version?: number | null;
+  document_id?: string | null;
+  source_type?: string | null;
+  chunk_count?: number | null;
+  oss_key?: string | null;
+  oss_url?: string | null;
+  knowledge_markdown_oss_url?: string | null;
+  knowledge_pdf_oss_url?: string | null;
+  asset_id?: number | null;
+  full_knowledge_file_id?: number | null;
+  brand_name?: string | null;
+  brand_code?: string | null;
+  current_step?: string | null;
+  parse_status?: string | null;
+  pdf_status?: string | null;
+  ingest_status?: string | null;
+  mysql_status?: string | null;
+  milvus_status?: string | null;
+  cleanup_status?: string | null;
+  is_latest?: boolean | null;
+  error_message?: string | null;
+  summary_status?: string | null;
+  summary_error?: string | null;
+  facts_status?: string | null;
+  facts_error?: string | null;
+  created_at?: string | null;
+  updated_at?: string | null;
+};
+
+export type UploadTaskStatusResponse = {
+  task_id: string;
+  task_type?: string | null;
+  status: string;
+  file_count: number;
+  success_count: number;
+  failed_count: number;
+  pending_count: number;
+  processing_count: number;
+  brand_code?: string | null;
+  brand_name?: string | null;
+  error_message?: string | null;
+  created_at?: string | null;
+  updated_at?: string | null;
+  files: UploadTaskFileStatus[];
+};

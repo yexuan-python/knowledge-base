@@ -1,0 +1,16 @@
+ALTER TABLE brand_products
+ADD COLUMN brand_id BIGINT NULL COMMENT '品牌ID，关联brands.id' AFTER id,
+ADD COLUMN product_website TEXT NULL COMMENT '产品网站' AFTER product_description,
+ADD COLUMN product_images_json JSON NULL COMMENT '产品图片JSON数组' AFTER product_website,
+ADD COLUMN price_info TEXT NULL COMMENT '价格信息' AFTER product_images_json,
+ADD COLUMN coverage_regions_json JSON NULL COMMENT '产品覆盖区域JSON数组' AFTER price_info,
+ADD COLUMN product_advantages TEXT NULL COMMENT '产品优势' AFTER coverage_regions_json,
+ADD COLUMN target_scenarios TEXT NULL COMMENT '适用场景或人群' AFTER product_advantages,
+ADD COLUMN service_standard TEXT NULL COMMENT '产品服务标准' AFTER target_scenarios,
+ADD COLUMN service_process TEXT NULL COMMENT '产品服务流程' AFTER service_standard,
+ADD COLUMN cases_and_reputation TEXT NULL COMMENT '产品案例与口碑' AFTER service_process,
+ADD COLUMN certification_info TEXT NULL COMMENT '获奖与认证信息' AFTER cases_and_reputation,
+ADD COLUMN core_technology TEXT NULL COMMENT '核心技术或专利名称' AFTER certification_info,
+ADD COLUMN other_info TEXT NULL COMMENT '产品其他信息' AFTER core_technology,
+ADD UNIQUE KEY uk_brand_id_product_name (brand_id, product_name),
+ADD INDEX idx_brand_products_brand_id (brand_id);

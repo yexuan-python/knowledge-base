@@ -1,0 +1,15 @@
+ALTER TABLE brand_full_knowledge_files
+    ADD COLUMN brand_code VARCHAR(64) NULL COMMENT '品牌业务编码' AFTER id,
+    ADD COLUMN knowledge_date CHAR(8) NULL COMMENT '知识库版本生成日期YYYYMMDD' AFTER version_no,
+    ADD COLUMN revision_no INT NOT NULL DEFAULT 1 COMMENT '同版本修订号' AFTER knowledge_date,
+    ADD COLUMN source_ext VARCHAR(32) NULL COMMENT '原始文件扩展名' AFTER file_name,
+    ADD COLUMN content_hash CHAR(64) NULL COMMENT 'Markdown内容SHA256' AFTER content_markdown,
+    ADD COLUMN document_id VARCHAR(128) NULL COMMENT 'Milvus文档ID' AFTER content_hash,
+    ADD COLUMN is_latest TINYINT(1) NOT NULL DEFAULT 0 COMMENT '是否为当前最新正式知识库' AFTER document_id,
+    ADD COLUMN ingest_status VARCHAR(32) NULL COMMENT '入库状态：pending/processing/success/failed/skipped' AFTER is_latest,
+    ADD COLUMN milvus_status VARCHAR(32) NULL COMMENT 'Milvus写入状态' AFTER ingest_status,
+    ADD COLUMN facts_status VARCHAR(32) NULL COMMENT '事实提取状态' AFTER milvus_status,
+    ADD COLUMN error_message TEXT NULL COMMENT '失败原因' AFTER facts_status,
+    ADD INDEX idx_brand_full_knowledge_latest (brand_code, is_latest, updated_at),
+    ADD INDEX idx_brand_full_knowledge_document (document_id),
+    ADD INDEX idx_brand_full_knowledge_hash (brand_code, content_hash);

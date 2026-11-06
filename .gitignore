@@ -1,0 +1,39 @@
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Frontend
+webapp/node_modules/
+webapp/dist/
+webapp/.vite/
+webapp/*.tsbuildinfo
+
+# IDEs and OS metadata
+.idea/
+.DS_Store
+**/.DS_Store
+
+# Runtime logs
+logs/
+*.log
+
+# Local data and generated runtime files
+data/
+
+start.sh

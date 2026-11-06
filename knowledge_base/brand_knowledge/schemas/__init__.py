@@ -1,0 +1,53 @@
+from .attachment_parsing import (
+    AttachmentConfirmResultData,
+    AttachmentConfirmResultResponse,
+    AttachmentConfirmSaveRequest,
+    AttachmentConfirmSaveResponse,
+    AttachmentPreviewItem,
+    AttachmentPreviewParseRequest,
+    AttachmentPreviewParseResponse,
+    AttachmentReviewChangeItem,
+    AttachmentReviewChangeSummary,
+    AttachmentReviewChangesRequest,
+    AttachmentReviewChangesResponse,
+)
+from .requests import (
+    BrandAttachmentConflictResolutionSubmitRequest,
+    BrandKnowledgeSessionCreateRequest,
+    BrandLatestConflictSessionRequest,
+    BrandKnowledgeConflictSessionCreateRequest,
+    BrandKnowledgeResolutionItem,
+)
+from .responses import (
+    BrandKnowledgeSessionEmptyResponse,
+    BrandKnowledgeAutoMergedItem,
+    BrandKnowledgeConflictItem,
+    BrandKnowledgeConflictOption,
+    BrandKnowledgeSessionResponse,
+    BrandKnowledgeSourceDocumentItem,
+)
+
+__all__ = [
+    "AttachmentConfirmResultData",
+    "AttachmentConfirmResultResponse",
+    "AttachmentConfirmSaveRequest",
+    "AttachmentConfirmSaveResponse",
+    "AttachmentPreviewItem",
+    "AttachmentPreviewParseRequest",
+    "AttachmentPreviewParseResponse",
+    "AttachmentReviewChangeItem",
+    "AttachmentReviewChangeSummary",
+    "AttachmentReviewChangesRequest",
+    "AttachmentReviewChangesResponse",
+    "BrandAttachmentConflictResolutionSubmitRequest",
+    "BrandKnowledgeSessionCreateRequest",
+    "BrandKnowledgeAutoMergedItem",
+    "BrandKnowledgeConflictSessionCreateRequest",
+    "BrandKnowledgeConflictItem",
+    "BrandKnowledgeConflictOption",
+    "BrandLatestConflictSessionRequest",
+    "BrandKnowledgeResolutionItem",
+    "BrandKnowledgeSessionEmptyResponse",
+    "BrandKnowledgeSessionResponse",
+    "BrandKnowledgeSourceDocumentItem",
+]

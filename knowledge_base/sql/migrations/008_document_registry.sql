@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS document_registry (
+    document_id VARCHAR(128) PRIMARY KEY,
+    category VARCHAR(255) NOT NULL,
+    original_filename VARCHAR(255) NOT NULL,
+    file_hash CHAR(64) NOT NULL,
+    file_size BIGINT NULL,
+    source_type VARCHAR(64) NULL,
+    source_url TEXT NULL,
+    upload_task_id VARCHAR(128) NULL,
+    original_file_key VARCHAR(255) NULL,
+    fulltext_key VARCHAR(255) NULL,
+    converted_version INT NULL,
+    is_latest TINYINT(1) NOT NULL DEFAULT 0,
+    status VARCHAR(32) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY uk_document_registry_category_hash (category, file_hash),
+    INDEX idx_document_registry_status (status, updated_at),
+    INDEX idx_document_registry_latest (category, original_filename, is_latest, status),
+    INDEX idx_document_registry_task (upload_task_id)
+) COMMENT='当前有效文档注册表';

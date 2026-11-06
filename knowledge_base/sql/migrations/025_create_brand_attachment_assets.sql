@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS brand_attachment_assets (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '主键ID',
+    brand_code VARCHAR(64) NOT NULL COMMENT '品牌业务编码',
+    brand_name VARCHAR(255) NOT NULL COMMENT '品牌名称',
+    upload_task_id VARCHAR(128) NULL COMMENT '来源上传任务ID',
+    upload_task_file_id BIGINT NULL COMMENT '来源上传任务文件ID',
+    original_filename VARCHAR(1024) NOT NULL COMMENT '原始文件名',
+    file_ext VARCHAR(32) NULL COMMENT '文件扩展名',
+    content_type VARCHAR(128) NULL COMMENT '文件内容类型',
+    file_size BIGINT NULL COMMENT '文件大小（字节）',
+    file_hash CHAR(64) NOT NULL COMMENT '文件内容SHA256',
+    oss_key VARCHAR(512) NOT NULL COMMENT 'OSS对象Key',
+    oss_url TEXT NULL COMMENT 'OSS访问地址',
+    source_url TEXT NULL COMMENT '原始来源地址',
+    status VARCHAR(32) NOT NULL DEFAULT 'success' COMMENT '状态：success/failed/skipped',
+    error_message TEXT NULL COMMENT '失败原因',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    UNIQUE KEY uk_brand_attachment_hash (brand_code, file_hash),
+    INDEX idx_brand_attachment_brand (brand_code, created_at),
+    INDEX idx_brand_attachment_task (upload_task_id)
+) COMMENT='品牌普通附件OSS资产表';
